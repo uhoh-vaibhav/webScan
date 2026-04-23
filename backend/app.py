@@ -20,7 +20,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'webguard-secret-change-in-prod')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
-CORS(app, origins=["http://localhost:5173", "http://localhost:3000"], supports_credentials=True)
+CORS(app, origins=["http://localhost:5173", "https://web-scan-two.vercel.app"], supports_credentials=True)
 db.init_app(app)
 jwt = JWTManager(app)
 
@@ -130,4 +130,5 @@ def health():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, port=port)
