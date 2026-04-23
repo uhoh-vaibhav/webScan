@@ -7,7 +7,9 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'https://webscan-production.up.railway.app/',
+        target: process.env.NODE_ENV === 'production' 
+          ? 'https://webscan-production.up.railway.app' 
+          : 'http://localhost:5000',
         changeOrigin: true,
       }
     }
