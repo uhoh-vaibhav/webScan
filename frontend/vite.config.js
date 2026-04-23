@@ -7,7 +7,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'https://webscan-production.up.railway.app',
+        target: 'https://webscan-production.up.railway.app/',
         changeOrigin: true,
       }
     }
